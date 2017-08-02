@@ -19,7 +19,11 @@
       <td><%= Province.find(information.province_id).name %></td>
       <td><%= Location.find(information.location_id).url01 %></td>
       <td><%= information.date %></td>
+      <% if information.images.present? %>
       <td><%= link_to('下截附件', information.attachment_url)%></td>
+      <% else %>
+      <td>没有附件</td>
+      <% end %>
       <td><%= link_to '修改', edit_information_path(information) %>|<%= link_to '删除', information_path(information), method: :delete, data: { confirm: "Are you sure?"} %></td>
     </tr>
 

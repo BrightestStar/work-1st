@@ -1,4 +1,4 @@
-class AttachmentUploader < CarrierWave::Uploader::Base
+class InformationImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -14,7 +14,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :thumb do
+  version :small do
     process resize_to_fit: [200, 200]
   end
 

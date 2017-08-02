@@ -40,6 +40,6 @@ class InformationController < ApplicationController
   private
 
   def information_params
-    params.require(:information).permit(:location_id, :province_id, :date, :attachment)
+    params.require(:information).permit(:location_id, :province_id, :date, :attachment, :remove_attachment, :remove_images, :images => [])
   end
 end
