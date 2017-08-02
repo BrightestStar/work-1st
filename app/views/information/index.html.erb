@@ -1,0 +1,29 @@
+<h2>监控系统数据</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>布署位置</th>
+      <th>省份</th>
+      <th>地址</th>
+      <th>上传日期</th>
+      <th>详情</th>
+      <th>编辑</th>
+    </tr>
+  </thead>
+
+  <body>
+
+    <% @information.each do |information| %>
+    <tr>
+      <td><%= Location.find(information.location_id).name %></td>
+      <td><%= Province.find(information.province_id).name %></td>
+      <td><%= Location.find(information.location_id).url01 %></td>
+      <td><%= information.date %></td>
+      <td></td>
+      <td><%= link_to 'Edit', '#' %>|<%= link_to 'Delete', '#', method: :delete, data: { confirm: "Are you sure?"} %></td>
+    </tr>
+
+    <% end %>
+
+  </body>
+</table>

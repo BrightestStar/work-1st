@@ -1,0 +1,18 @@
+<%= simple_form_for @information do |f| %>
+
+<div class="group">
+  <tr>
+    <%= select_tag(:location_id, options_for_select(@locations), :prompt => "布署位置") %>
+    <%= select_tag(:province_id, options_for_select(@provinces), :prompt => "省份") %>
+  </tr>
+</div>
+
+<div class="group">
+  <%= f.input :date %>
+</div>
+<div class="group">
+  <%= f.input :attachment %>
+</div>
+
+<%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
