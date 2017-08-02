@@ -1,5 +1,61 @@
+<h2>布署位置</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>名称</th>
+      <th>监控服务地址</th>
+      <th>队列服务地址</th>
+      <th>选项</th>
+    </tr>
+  </thead>
 
+  <body>
 
-<% @locations.each do |location| %>
-<%= location.name%>
-<% end %>
+    <% @locations.each do |location| %>
+    <tr>
+      <td><%= location.id %></td>
+      <td><%= location.name %></td>
+      <td><%= location.url01 %></td>
+      <td><%= location.url02 %></td>
+      <td><%= link_to 'Edit', '#' %>|<%= link_to 'Delete', '#', method: :delete, data: { confirm: "Are you sure?"} %></td>
+    </tr>
+
+    <% end %>
+
+  </body>
+  <div class="pull-right" style="padding-bottom: 20px;">
+    <%= link_to '填加数据项', new_location_path, class: "btn btn-primary btn-sm" %>
+  </div>
+</table>
+
+<br>
+<hr>
+<h2>布署省份</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>省份</th>
+      <th>城市</th>
+      <th>选项</th>
+    </tr>
+  </thead>
+
+  <body>
+
+    <% @provinces.each do |province| %>
+    <tr>
+      <td><%= province.id %></td>
+      <td><%= province.name %></td>
+      <td><%= province.city %></td>
+      <td><%= link_to 'Edit', '#' %>|<%= link_to 'Delete', '#', method: :delete, data: { confirm: "Are you sure?"} %></td>
+    </tr>
+
+    <% end %>
+
+  </body>
+  <div class="pull-right" style="padding-bottom: 20px;">
+    <%= link_to '填加数据项', new_province_path, class: "btn btn-primary btn-sm" %>
+  </div>
+</table>
