@@ -1,0 +1,15 @@
+<%= simple_form_for @location do |f| %>
+
+<div class="group">
+  <%= f.input :name %>
+</div>
+<div class="group">
+  <%= f.input :url01 %>
+</div>
+<div class="group">
+  <%= f.input :url02 %>
+</div>
+
+
+<%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
