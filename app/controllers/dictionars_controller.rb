@@ -1,0 +1,2 @@
+class DictionarsController < ApplicationController
+end
