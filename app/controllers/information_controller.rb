@@ -5,20 +5,36 @@ class InformationController < ApplicationController
 
   def new
     @information = Information.new
-    @locations = Location.all.map { |l| [l.name, l.id] }
-    @provinces = Province.all.map { |province| [province.name, province.id] }
   end
 
   def create
     @information = Information.new(information_params)
-    @information.location_id = params[:location_id]
-    @information.province_id = params[:province_id]
 
     if @information.save
       redirect_to information_index_path
     else
       render :new
     end
+  end
+
+  def edit
+    @information = Information.find(params[:id])
+  end
+
+  def update
+    @information = Information.find(params[:id])
+
+    if @information.update(information_params)
+      redirect_to information_index_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @information = Information.find(params[:id])
+    @information.destroy
+    redirect_to information_index_path
   end
 
   private

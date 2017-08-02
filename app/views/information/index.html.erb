@@ -20,7 +20,7 @@
       <td><%= Location.find(information.location_id).url01 %></td>
       <td><%= information.date %></td>
       <td><%= link_to('下截附件', information.attachment_url)%></td>
-      <td><%= link_to 'Edit', '#' %>|<%= link_to 'Delete', '#', method: :delete, data: { confirm: "Are you sure?"} %></td>
+      <td><%= link_to '修改', edit_information_path(information) %>|<%= link_to '删除', information_path(information), method: :delete, data: { confirm: "Are you sure?"} %></td>
     </tr>
 
     <% end %>
