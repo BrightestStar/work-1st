@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :require_admin!
+
   def index
     @users = User.all
   end
@@ -11,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to admin_users_path
+      redirect_to users_path
     else
       render "edit"
     end
@@ -20,6 +24,6 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:email, :username)
+    params.require(:user).permit(:email, :username, :role)
   end
 end

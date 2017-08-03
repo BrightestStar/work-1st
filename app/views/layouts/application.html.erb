@@ -35,9 +35,11 @@
             <li>
               <%= link_to("事件添加", '#') %>
             </li>
+            <% if current_user && current_user.is_admin? %>
             <li>
               <%= link_to("人员管理", users_path) %>
             </li>
+            <% end %>
             <li>
               <%= link_to("字典表管理", dictionars_path) %>
             </li>

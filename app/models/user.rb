@@ -9,4 +9,11 @@ class User < ActiveRecord::Base
   has_many :provinces
 
   validates_presence_of :username
+
+   ROLES = ["admin", "user"]
+
+  def is_admin?
+    self.role == "admin"
+  end
+
 end
