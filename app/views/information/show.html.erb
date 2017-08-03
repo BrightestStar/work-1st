@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-5">
+    <!-- 图片 -->
+    <% if @information.images.present? %>
+    <% @information.images.each do |i| %>
+    <%= image_tag(i.url(:medium)) %>
+    <% end %>
+  <% else %>
+    <td>没有附件</td>
+    <% end %>
+  </div>
+  <div class="col-md-7">
+    <div class="col-md-7 pull-left">
+      <h3>
+        布署位置：<%= Location.find(@information.location_id).name %>
+      </h3>
+    </div>
+    <div class="col-md-7 pull-left">
+      <h3>
+        所属省份：<%= Province.find(@information.province_id).name %>
+      </h3>
+    </div>
+    <div class="col-md-7 pull-left">
+      <h3>
+        监控服务地址：<%= Location.find(@information.location_id).url01 %>
+      </h3>
+    </div>
+    <div class="col-md-7 pull-left">
+      <h3>
+        队列服务地址：<%= Location.find(@information.location_id).url02 %>
+      </h3>
+    </div>
+    <div class="col-md-7 pull-left">
+      <h3>
+        上传人员：<%= @information.user.username %>
+      </h3>
+    </div>
+  </div>
+</div>
