@@ -20,15 +20,17 @@
       <td><%= Province.find(information.province_id).name %></td>
       <td><%= Location.find(information.location_id).url01 %></td>
       <td><%= information.user.username %></td>
-      <td><%= information.date %></td>
+      <td><%= information.date.strftime("%Y/%m/%d") %></td>
       <% if information.images.present? %>
-      <td><%= link_to('下截附件', information.attachment_url)%></td>
-      <% else %>
+      <% information.images.each do |i| %>
+      <td><%= link_to image_tag(i.url(:small)), i.url %></td>
+      <% end %>
+    <% else %>
       <td>没有附件</td>
       <% end %>
       <% if information.user == current_user || current_user&&current_user.is_admin?  %>
       <td><%= link_to '修改', edit_information_path(information) %>|<%= link_to '删除', information_path(information), method: :delete, data: { confirm: "Are you sure?"} %></td>
-      <% else %>
+    <% else %>
       <td>没有权限修改</td>
       <% end %>
     </tr>

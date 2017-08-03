@@ -1,15 +1,19 @@
 <%= simple_form_for @location do |f| %>
 
 <div class="group">
-  <%= f.input :name %>
+  <%= f.label :布署位置 %>
+  <%= f.text_field :name, class: "form-control" %>
 </div>
+<br>
 <div class="group">
-  <%= f.input :url01 %>
+  <%= f.label :监控服务地址 %>
+  <%= f.text_field :url01, class: "form-control" %>
 </div>
+ <br>
 <div class="group">
-  <%= f.input :url02 %>
+  <%= f.label :队列服务地址 %>
+  <%= f.text_field :url02, class: "form-control" %>
 </div>
-
-
+<br><br>
 <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

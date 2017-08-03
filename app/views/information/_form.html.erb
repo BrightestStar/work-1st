@@ -21,8 +21,9 @@
   <div class="help-block with-errors"></div>
 </div>
 
-<div class="group">
-  <%= f.input :date %>
+<div class="form-group">
+  <%= f.label :上传日期 %>
+  <%= f.text_field :date, :class => "form-control" %>
 </div>
 
 <!--上传单个附件 -->
@@ -58,4 +59,8 @@
 
 <script>
   $("form").validator();
+</script>
+
+<script>
+  $("#information_date").datepicker({ format: "yyyy-mm-dd", language: "<%= I18n.locale %>" });
 </script>

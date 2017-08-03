@@ -1,12 +1,15 @@
 <%= simple_form_for @province do |f| %>
 
 <div class="group">
-  <%= f.input :name %>
+  <%= f.label :省份 %>
+  <%= f.text_field :name, class: "form-control" %>
 </div>
+<br>
 <div class="group">
-  <%= f.input :city %>
+  <%= f.label :城市 %>
+  <%= f.text_field :city, class: "form-control" %>
 </div>
-<div class="group">
+<br><br>
 
 <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
