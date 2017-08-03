@@ -1,10 +1,13 @@
 class ProvincesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def new
     @province = Province.new
   end
 
   def create
     @province = Province.new(province_params)
+    @province.user = current_user
 
     if @province.save
       redirect_to dictionars_path
@@ -15,10 +18,18 @@ class ProvincesController < ApplicationController
 
   def edit
     @province = Province.find(params[:id])
+
+    if current_user != @province.user
+      redirect_to root_path
+    end
   end
 
   def update
     @province = Province.find(params[:id])
+
+    if current_user != @province.user
+      redirect_to root_path
+    end
 
     if @province.update(province_params)
       redirect_to dictionars_path
@@ -29,6 +40,11 @@ class ProvincesController < ApplicationController
 
   def destroy
     @province = Province.find(params[:id])
+
+    if current_user != @province.user
+      redirect_to root_path
+    end
+    
     @province.destroy
     redirect_to dictionars_path
   end

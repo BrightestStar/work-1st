@@ -7,6 +7,8 @@ class Information < ActiveRecord::Base
   has_many :Locations
   has_many :provinces
 
+  belongs_to :user
+
   validates_presence_of :location_id, :province_id
 
 end

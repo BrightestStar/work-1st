@@ -3,11 +3,25 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Monit</a>
     </div>
-
+    <% if current_user %>
+    <ul class="nav navbar-nav navbar-left">
+      <li><%=link_to "当前用户：#{current_user.username}", edit_user_registration_path %></li>
+    </ul>
+    <% end %>
+    <div "navbar-header"></div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-
-
+        <% if !current_user %>
+        <li><%= link_to "注册", new_user_registration_path %></li>
+        <li><%= link_to "登入", new_user_session_path %></li>
+      <% else %>
+        <li>
+          <%= link_to('修改个人资料', edit_user_registration_path) %>
+        </li>
+        <li>
+          <%= link_to(content_tag(:i, '登出', class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %>
+        </li>
+        <% end %>
       </ul>
     </div>
   </div>
