@@ -18,7 +18,11 @@
       <td><%= location.name %></td>
       <td><%= location.url01 %></td>
       <td><%= location.url02 %></td>
+      <% if location.user == current_user || current_user&&current_user.is_admin?  %>
       <td><%= link_to '修改', edit_location_path(location) %>|<%= link_to '删除', location_path(location), method: :delete, data: { confirm: "确定要删除这笔布署位置吗?"} %></td>
+      <% else %>
+      <td>没有权限修改</td>
+      <% end %>
     </tr>
 
     <% end %>
@@ -49,7 +53,11 @@
       <td><%= province.id %></td>
       <td><%= province.name %></td>
       <td><%= province.city %></td>
+      <% if province.user == current_user || current_user&&current_user.is_admin?  %>
       <td><%= link_to '修改', edit_province_path(province) %>|<%= link_to '删除', province_path(province), method: :delete, data: { confirm: "确定要删除省份吗?"} %></td>
+      <% else %>
+      <td>没有权限修改</td>
+      <% end %>
     </tr>
 
     <% end %>

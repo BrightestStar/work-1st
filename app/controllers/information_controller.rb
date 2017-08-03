@@ -22,18 +22,10 @@ class InformationController < ApplicationController
 
   def edit
     @information = Information.find(params[:id])
-
-    if current_user != @information.user
-      redirect_to root_path
-    end
   end
 
   def update
     @information = Information.find(params[:id])
-
-    if current_user != @information.user
-      redirect_to root_path
-    end
 
     if @information.update(information_params)
       redirect_to information_index_path
@@ -44,11 +36,6 @@ class InformationController < ApplicationController
 
   def destroy
     @information = Information.find(params[:id])
-
-    if current_user != @information.user
-      redirect_to root_path
-    end
-
     @information.destroy
     redirect_to information_index_path
 
