@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   resources :information
 
+  resources :users
+
 end

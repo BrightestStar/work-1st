@@ -1,0 +1,18 @@
+<h1>Admin Users</h1>
+
+<table class="table">
+<tr>
+  <th>ID</th>
+  <th>用户名</th>
+  <th>邮箱</th>
+  <th>管理</th>
+</tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to "Edit", edit_user_path(user), :class => "btn btn-default" %></td>
+  </tr>
+<% end %>
+</table>
