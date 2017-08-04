@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   resources :provinces
 
-  resources :information
+  resources :information do
+    collection do
+      get "pdf_print"
+    end
+  end
 
   resources :users
 

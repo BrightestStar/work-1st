@@ -1,4 +1,12 @@
 <h2>监控系统数据</h2>
+<br>
+<%= form_tag information_index_path(@information), :method => :get do %>
+<p>
+  上传日期：<%= date_field_tag :start_on, params[:start_on] %>～<%= date_field_tag :end_on, params[:end_on] %>
+  <%= submit_tag "送出筛选", :class => "pull-right btn btn-primary" %>
+</p>
+<% end %>
+<br>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -23,9 +31,9 @@
       <td><%= information.date.strftime("%Y/%m/%d") %></td>
       <% if information.images.present? %>
       <td>
-      <% information.images.each do |i| %>
-      <%= link_to image_tag(i.url(:small)), i.url %>
-      <% end %>
+        <% information.images.each do |i| %>
+        <%= link_to image_tag(i.url(:small)), i.url %>
+        <% end %>
       </td>
     <% else %>
       <td>没有附件</td>
@@ -41,3 +49,7 @@
 
   </body>
 </table>
+<div class="col-md-7 pull-right">
+  <%= link_to "导出 PDF", pdf_print_information_index_path(format: :pdf,start_on: params[:start_on], end_on: params[:end_on]), class: "btn btn-success" %>
+  <!-- <a href="/information.pdf">导出pdf</a> -->
+</div>

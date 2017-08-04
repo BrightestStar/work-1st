@@ -3,6 +3,15 @@ class InformationController < ApplicationController
 
   def index
     @information = Information.all
+
+    if params[:start_on].present?
+      @information = @information.where( "information.date >= ?", Date.parse(params[:start_on]).beginning_of_day )
+    end
+
+    if params[:end_on].present?
+      @information = @information.where( "information.date <= ?", Date.parse(params[:end_on]).end_of_day )
+    end
+
   end
 
   def new
@@ -53,6 +62,28 @@ class InformationController < ApplicationController
     redirect_to information_index_path
 
   end
+
+  def pdf_print
+    @information = Information.all
+
+    if params[:start_on].present?
+      @information = @information.where( "information.date >= ?", Date.parse(params[:start_on]).beginning_of_day )
+    end
+
+    if params[:end_on].present?
+      @information = @information.where( "information.date <= ?", Date.parse(params[:end_on]).end_of_day )
+    end
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name_of_your_choice",
+               template: "information/index.html.erb",
+               locals: {:information => @information}
+      end
+    end
+  end
+
+
 
   private
 
