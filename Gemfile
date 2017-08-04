@@ -38,6 +38,9 @@ gem 'mini_magick'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

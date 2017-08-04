@@ -22,6 +22,15 @@ class InformationController < ApplicationController
 
   def show
     @information = Information.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name_of_your_choice",
+               template: "information/show.html.erb",
+               locals: {:information => @information}
+      end
+    end
   end
 
   def edit
