@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'/>
+    <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+  </head>
+  <body onload='number_pages'>
+    <div class="col-md-7">
+      <%= yield %>
+    </div>
+    <br>
+    <div class="col-md-5">
+      <% if @information.images.present? %>
+      <% @information.images.each do |i| %>
+      <%= wicked_pdf_image_tag(i.url(:thumb)) %>
+      <% end %>
+    <% else %>
+      没有附件
+      <% end %>
+    </div>
+  </body>
+</html>

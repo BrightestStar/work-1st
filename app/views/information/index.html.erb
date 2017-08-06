@@ -10,13 +10,13 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>布署位置</th>
-      <th>省份</th>
-      <th>地址</th>
-      <th>上传人员</th>
-      <th>上传日期</th>
-      <th>详情</th>
-      <th>编辑</th>
+      <th width="15%">布署位置</th>
+      <th width="10%">省份</th>
+      <th width="20%">地址</th>
+      <th width="15%">上传人员</th>
+      <th width="15%">上传日期</th>
+      <th width="10%">详情</th>
+      <th width="15%">编辑</th>
     </tr>
   </thead>
 
@@ -32,7 +32,7 @@
       <% if information.images.present? %>
       <td>
         <% information.images.each do |i| %>
-        <%= link_to image_tag(i.url(:small)), i.url %>
+        <%= link_to '下载图片', i.url %>
         <% end %>
       </td>
     <% else %>
@@ -49,6 +49,7 @@
 
   </body>
 </table>
+<br>
 <div class="col-md-7 pull-right">
   <%= link_to "导出 PDF", pdf_print_information_index_path(format: :pdf,start_on: params[:start_on], end_on: params[:end_on]), class: "btn btn-success" %>
   <!-- <a href="/information.pdf">导出pdf</a> -->

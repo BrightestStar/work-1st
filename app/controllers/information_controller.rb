@@ -31,12 +31,15 @@ class InformationController < ApplicationController
 
   def show
     @information = Information.find(params[:id])
-
+    
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "file_name_of_your_choice",
+        render pdf: "your-filename",
+               encoding: 'UTF-8',
                template: "information/show.html.erb",
+               no_background: false,
+               layout: "pdf",
                locals: {:information => @information}
       end
     end
@@ -77,7 +80,9 @@ class InformationController < ApplicationController
       format.html
       format.pdf do
         render pdf: "file_name_of_your_choice",
+               encoding: 'UTF-8',
                template: "information/index.html.erb",
+               no_background: false,
                locals: {:information => @information}
       end
     end
