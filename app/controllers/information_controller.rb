@@ -31,7 +31,7 @@ class InformationController < ApplicationController
 
   def show
     @information = Information.find(params[:id])
-    
+
     respond_to do |format|
       format.html
       format.pdf do
