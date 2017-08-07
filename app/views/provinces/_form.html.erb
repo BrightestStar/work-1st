@@ -1,8 +1,18 @@
 <%= simple_form_for @province do |f| %>
 
+<% if @province.errors.any? %>
+<ul>
+  <% @province.errors.full_messages.each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
 <div class="group">
   *<%= f.label :省份 %>
-  <%= f.text_field :name, class: "form-control" %>
+  <%= f.text_field :name, class: "form-control", :required => true, :autofocus => true %>
+  <div class="help-block with-errors"></div>
 </div>
 <br>
 <div class="group">
@@ -13,3 +23,7 @@
 
 <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
+
+<script>
+  $("form").validator();
+</script>

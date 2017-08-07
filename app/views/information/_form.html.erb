@@ -23,7 +23,9 @@
 
 <div class="form-group">
   <%= f.label :上传日期 %>
-  <%= f.text_field :date, :class => "form-control" %>
+  (不能为空)
+  <%= f.text_field :date, :class => "form-control", :required => true %>
+  <div class="help-block with-errors"></div>
 </div>
 
 <!--上传单个附件 -->
@@ -62,5 +64,5 @@
 </script>
 
 <script>
-  $("#information_date").datepicker({ format: "yyyy-mm-dd", language: "<%= I18n.locale %>" });
+  $("#information_date").datepicker({format: "yyyy-mm-dd", language: "<%= I18n.locale %>"});
 </script>

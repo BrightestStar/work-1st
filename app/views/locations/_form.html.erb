@@ -1,13 +1,21 @@
 <%= simple_form_for @location do |f| %>
 
+<% if @location.errors.any? %>
+<ul>
+  <% @location.errors.full_messages.each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+
 <div class="group">
-  <%= f.label :布署位置 %>
-  <%= f.text_field :name, class: "form-control" %>
+  *<%= f.label :布署位置 %>
+  <%= f.text_field :name, class: "form-control", :required => true, :autofocus => true  %>
 </div>
 <br>
 <div class="group">
-  <%= f.label :监控服务地址 %>
-  <%= f.text_field :url01, class: "form-control" %>
+  *<%= f.label :监控服务地址 %>
+  <%= f.text_field :url01, class: "form-control", :required => true %>
 </div>
  <br>
 <div class="group">
@@ -17,3 +25,7 @@
 <br><br>
 <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
+
+<script>
+  $("form").validator();
+</script>
