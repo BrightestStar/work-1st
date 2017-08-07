@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
 
-   ROLES = ["admin", "user"]
+   ROLES = ["admin", "consumer"] #consumer为普通用户
 
   def is_admin?
     self.role == "admin"

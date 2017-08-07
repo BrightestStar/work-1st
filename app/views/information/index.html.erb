@@ -2,8 +2,14 @@
 <br>
 <%= form_tag information_index_path(@information), :method => :get do %>
 <p>
-  上传日期：<%= date_field_tag :start_on, params[:start_on] %>～<%= date_field_tag :end_on, params[:end_on] %>
-  <%= submit_tag "送出筛选", :class => "pull-right btn btn-primary" %>
+  上传日期：
+  <div class="">
+    <%= text_field_tag :start_on, params[:start_on] %>
+    ～
+    <%= text_field_tag :end_on, params[:end_on] %>
+    <%= submit_tag "送出筛选", :class => "pull-right btn btn-primary" %>
+  </div>
+
 </p>
 <% end %>
 <br>
@@ -26,7 +32,7 @@
     <tr>
       <td><%= link_to Location.find(information.location_id).name, information_path(information) %></td>
       <td><%= Province.find(information.province_id).name %></td>
-      <td><%= Location.find(information.location_id).url01 %></td>
+      <td><%= link_to Location.find(information.location_id).url01, Location.find(information.location_id).url01 %></td>
       <td><%= information.user.username %></td>
       <td><%= information.date.strftime("%Y/%m/%d") %></td>
       <% if information.images.present? %>
@@ -54,3 +60,8 @@
   <%= link_to "导出 PDF", pdf_print_information_index_path(format: :pdf,start_on: params[:start_on], end_on: params[:end_on]), class: "btn btn-success" %>
   <!-- <a href="/information.pdf">导出pdf</a> -->
 </div>
+
+<script>
+  $("#start_on").datepicker({format: "yyyy-mm-dd", language: "<%= I18n.locale %>"});
+  $("#end_on").datepicker({format: "yyyy-mm-dd", language: "<%= I18n.locale %>"});
+</script>

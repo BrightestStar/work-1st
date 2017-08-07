@@ -9,6 +9,8 @@ class Information < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :location_id, :province_id, :date
+  validates_presence_of :location_id, :province_id
+  validates_presence_of :date
+
 
 end

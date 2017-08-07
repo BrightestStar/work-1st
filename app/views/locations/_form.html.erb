@@ -15,12 +15,12 @@
 <br>
 <div class="group">
   *<%= f.label :监控服务地址 %>
-  <%= f.text_field :url01, class: "form-control", :required => true %>
+  <%= f.url_field :url01, class: "form-control", :required => true %>
 </div>
  <br>
 <div class="group">
   <%= f.label :队列服务地址 %>
-  <%= f.text_field :url02, class: "form-control" %>
+  <%= f.url_field :url02, class: "form-control" %>
 </div>
 <br><br>
 <%= f.submit "Submit", class: "btn btn-primary" %>

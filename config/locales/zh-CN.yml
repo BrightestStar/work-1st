@@ -1,5 +1,8 @@
 "zh-CN":
+  admin: 管理员
+  consumer: 普通用户  #使用consumer为避免与user冲突
+
   user:
     role:
       admin: 管理员
-      user: 普通用户 
+      consumer: 普通用户
